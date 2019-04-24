@@ -2,9 +2,11 @@ package commonFunctions;
 
 import java.util.ArrayList;
 
-import net.sourceforge.htmlunit.corejs.javascript.ast.ErrorCollector;
+//import net.sourceforge.htmlunit.corejs.javascript.ast.ErrorCollector;
 
-import org.apache.commons.logging.Log;
+
+
+//import org.apache.commons.logging.Log;
 import org.apache.poi.ss.formula.DataValidationEvaluator.OperatorEnum;
 import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
@@ -22,7 +24,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 
+import util.Log;
 import util.Xls_Reader;
+import ErrorCollectors.ErrorCollector;
 
 import com.gargoylesoftware.htmlunit.Cache;
 
@@ -134,8 +138,8 @@ public class CommonMethods {
 	}
 	
 	public static WebElement findElement(String locatorName) {
-		String locatorType = Xls_Reader.getLoactorType(locatorName);
-		String locatorValue = Xls_Reader.getLoactorValue(locatorName);
+		String locatorType = Xls_Reader.getLocatorType(locatorName);
+		String locatorValue = Xls_Reader.getLocatorValue(locatorName);
 		WebElement element = null;
 		if (locatorType.equalsIgnoreCase("xpath")) {
 			try {
@@ -149,12 +153,58 @@ public class CommonMethods {
 								+ locatorValue);
 			}
 		} else if (locatorType.equalsIgnoreCase("id")) {
+			try {
+				element = driver.findElement(By.xpath(locatorValue));
+			} catch (Throwable e) {
+				// TODO: handle exception
+				Log.error("Web driver failed to locate the element whose id is:"
+						+ locatorValue);
+				ErrorCollector
+						.VerifyFail("Web driver failed to locate the element whose xpidath is:"
+								+ locatorValue);}
 		} else if (locatorType.equalsIgnoreCase("name")) {
+			try {
+				element = driver.findElement(By.xpath(locatorValue));
+			} catch (Throwable e) {
+				// TODO: handle exception
+				Log.error("Web driver failed to locate the element whose name is:"
+						+ locatorValue);
+				ErrorCollector
+						.VerifyFail("Web driver failed to locate the element whose name is:"
+								+ locatorValue);}
 		} else if (locatorType.equalsIgnoreCase("linktest")) {
+			try {
+				element = driver.findElement(By.xpath(locatorValue));
+			} catch (Throwable e) {
+				// TODO: handle exception
+				Log.error("Web driver failed to locate the element whose linktext is :" + locatorValue);
+				ErrorCollector
+						.VerifyFail("Web driver failed to locate the element whose linktext is:"
+								+ locatorValue);}
 		} else if (locatorType.equalsIgnoreCase("css")) {
+			try {
+				element = driver.findElement(By.xpath(locatorValue));
+			} catch (Throwable e) {
+				// TODO: handle exception
+				Log.error("Web driver failed to locate the element whose css selector is :" + locatorValue);
+				ErrorCollector
+						.VerifyFail("Web driver failed to locate the element whose css selector is:"
+								+ locatorValue);}
 		} else if (locatorType.equalsIgnoreCase("tagname")) {
+			try {
+				element = driver.findElement(By.xpath(locatorValue));
+			} catch (Throwable e) {
+				// TODO: handle exception
+				Log.error("Web driver failed to locate the element whose taganame is :" + locatorValue);
+				ErrorCollector
+						.VerifyFail("Web driver failed to locate the element whose taganame is:"
+								+ locatorValue);}			
 		} else {
-		}
+			Log.error("Web driver failed to locate the element whose locator is :" + locatorValue);
+			ErrorCollector
+					.VerifyFail("Web driver failed to locate the element whose locator is:"
+							+ locatorValue);}
+		return element;
 	}
 	
 	public static void waitForXSeconds(int timeinMillis) {
