@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+
 //import org.apache.commons.logging.Log;
 import org.apache.poi.ss.formula.DataValidationEvaluator.OperatorEnum;
 import org.apache.xmlbeans.impl.xb.xsdschema.Public;
@@ -20,6 +21,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,6 +35,11 @@ import com.gargoylesoftware.htmlunit.Cache;
 
 public class CommonMethods {
 	public static WebDriver driver;
+	public final static String USERNAME = "charu37";
+	public final static String AUTOMATE_KEY = "PKpe2CDFmbZiMG4Q9frw";
+	public final static String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY
+			+ "@hub.browserstack.com/wd/hub";
+	public static java.net.URL browseStackURL;
 	private static ArrayList<ITestContext> iTestContextsList;
 	
 	public static void contexts() {
@@ -218,9 +225,7 @@ public class CommonMethods {
 		return element;
 	}
 	
-	
-	public static WebElement findElement(String locatorType,String locatorValue) {
-
+	public static WebElement findElement(String locatorType, String locatorValue) {
 		WebElement element = null;
 		if (locatorType.equalsIgnoreCase("xpath")) {
 			try {
@@ -297,9 +302,6 @@ public class CommonMethods {
 		}
 		return element;
 	}
-	
-	
-	
 	
 	public static List<WebElement> findElements(String locatorName) {
 		String locatorType = Xls_Reader.getLocatorType(locatorName);
@@ -381,8 +383,8 @@ public class CommonMethods {
 		return elements;
 	}
 	
-	public static List<WebElement> findElements(String locatorType,String locatorValue) {
-
+	public static List<WebElement> findElements(String locatorType,
+			String locatorValue) {
 		List<WebElement> elements = null;
 		if (locatorType.equalsIgnoreCase("xpath")) {
 			try {
@@ -990,8 +992,8 @@ public class CommonMethods {
 		}
 	}
 	
-	
-	public static void waitTillElementVisble(String locatorType,String locatorValue) {
+	public static void waitTillElementVisble(String locatorType,
+			String locatorValue) {
 		WebDriverWait wait = new WebDriverWait(driver, 120);
 		if (locatorType.toUpperCase().equals("CSS")) {
 			try {
@@ -1019,6 +1021,7 @@ public class CommonMethods {
 			}
 		}
 	}
+	
 	public static WebDriver launchBrowser() {
 		DesiredCapabilities capabilities = null;
 		String browserType = Util.getConfigData("browser");
@@ -1138,5 +1141,50 @@ public class CommonMethods {
 		}
 	}
 	
-	
+	public static WebDriver launchBrowser(String Platform, String Browser) {
+		DesiredCapabilities caps = new DesiredCapabilities();
+		//String browserType = Util.getConfigData("browser");
+		try {
+			caps.setCapability("browserstack.local", "false");
+			switch (Browser) {
+			case "Chrome":
+				caps.setCapability("browser", "Chrome");
+				caps.setCapability("browser_version", "62.0");
+				break;
+			case "Edge":
+				caps.setCapability("browser", "Edge");
+				caps.setCapability("browser_version", "18.0");
+				break;
+			case "IE":
+				caps.setCapability("browser", "IE");
+				caps.setCapability("browser_version", "11.0");
+				break;
+			default:
+				caps.setCapability("browser", "Chrome");
+				caps.setCapability("browser_version", "62.0");
+				break;
+			}
+			switch (Platform) {
+			case "Windows":
+				caps.setCapability("os_version", "10");
+				break;
+			case "Android":
+				caps.setCapability("os_version", "7.0");
+				caps.setCapability("device", "Samsung Galaxy S8");
+				caps.setCapability("real_mobile", "true");
+				caps.setCapability("browserstack.local", "false");
+				break;
+			default:
+				caps.setCapability("os_version", "10");
+				break;
+			}
+			browseStackURL = new java.net.URL(URL);
+		} catch (Throwable t) {
+			// TODO: handle exception
+			// Log.error("Unable to launch browser :" + browserType);
+			// ErrorCollector.VerifyFail("unable to launch browser :" +
+			// browserType);
+		}
+		return new RemoteWebDriver(browseStackURL, caps);
+	}
 }

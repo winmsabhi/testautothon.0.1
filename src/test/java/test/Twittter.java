@@ -16,10 +16,13 @@ import commonFunctions.Util;
 
 public class Twittter {
 	WebDriver driver = null;
+
 	
 	@BeforeSuite
 	public void setup() {
-		driver = CommonMethods.launchBrowser();
+
+		
+		driver = CommonMethods.launchBrowser("Windows","Chrome");
 		driver.get(Util.getConfigData("url"));
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
