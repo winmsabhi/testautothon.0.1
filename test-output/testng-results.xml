@@ -2,15 +2,19 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="38658" started-at="2019-04-25T06:40:34Z" finished-at="2019-04-25T06:41:13Z">
+  <suite name="Default suite" duration-ms="372" started-at="2019-04-25T07:19:23Z" finished-at="2019-04-25T07:19:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="38658" started-at="2019-04-25T06:40:34Z" finished-at="2019-04-25T06:41:13Z">
+    <test name="Default test" duration-ms="372" started-at="2019-04-25T07:19:23Z" finished-at="2019-04-25T07:19:23Z">
       <class name="test.Twittter">
-        <test-method status="PASS" signature="test()[pri:0, instance:test.Twittter@364f2b6c]" name="test" duration-ms="38634" started-at="2019-04-25T12:10:34Z" finished-at="2019-04-25T12:11:13Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:test.Twittter@2f7a62cb]" name="setup" is-config="true" duration-ms="31881" started-at="2019-04-25T12:48:51Z" finished-at="2019-04-25T12:49:23Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test -->
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="getUsers()[pri:0, instance:test.Twittter@2f7a62cb]" name="getUsers" duration-ms="349" started-at="2019-04-25T12:49:23Z" description="This will give users " finished-at="2019-04-25T12:49:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getUsers -->
       </class> <!-- test.Twittter -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

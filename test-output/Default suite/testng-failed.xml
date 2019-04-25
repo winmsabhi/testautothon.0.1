@@ -5,6 +5,7 @@
     <classes>
       <class name="test.Twittter">
         <methods>
+          <include name="setup"/>
           <include name="test"/>
         </methods>
       </class> <!-- test.Twittter -->
