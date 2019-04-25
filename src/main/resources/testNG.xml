@@ -1,7 +1,7 @@
 <suite name = "TestAutoThon">
 	<test name = "LaunchBrowser">
 		<classes>
-			<class name="test.LaunchTest"/>
+			<class name="test.Twitter"/>
 		</classes>
 	</test>
 </suite>

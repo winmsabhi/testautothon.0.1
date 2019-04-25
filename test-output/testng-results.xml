@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="TestAutoThon" duration-ms="4631" started-at="2019-04-24T11:09:26Z" finished-at="2019-04-24T11:09:30Z">
+  <suite name="Default suite" duration-ms="38658" started-at="2019-04-25T06:40:34Z" finished-at="2019-04-25T06:41:13Z">
     <groups>
     </groups>
-    <test name="LaunchBrowser" duration-ms="4631" started-at="2019-04-24T11:09:26Z" finished-at="2019-04-24T11:09:30Z">
-      <class name="test.LaunchTest">
-        <test-method status="PASS" signature="test()[pri:0, instance:test.LaunchTest@28ac3f94]" name="test" duration-ms="4605" started-at="2019-04-24T16:39:26Z" finished-at="2019-04-24T16:39:30Z">
+    <test name="Default test" duration-ms="38658" started-at="2019-04-25T06:40:34Z" finished-at="2019-04-25T06:41:13Z">
+      <class name="test.Twittter">
+        <test-method status="PASS" signature="test()[pri:0, instance:test.Twittter@364f2b6c]" name="test" duration-ms="38634" started-at="2019-04-25T12:10:34Z" finished-at="2019-04-25T12:11:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-      </class> <!-- test.LaunchTest -->
-    </test> <!-- LaunchBrowser -->
-  </suite> <!-- TestAutoThon -->
+      </class> <!-- test.Twittter -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
