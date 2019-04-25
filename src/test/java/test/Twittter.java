@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -24,7 +25,7 @@ public class Twittter {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
-	//@Test(description = "This method will fetch the maximum retry count")
+	@Test(description = "This method will fetch the maximum retry count")
 	public void test() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		int maxRetweet = 0;
@@ -71,11 +72,16 @@ public class Twittter {
 				String name = null;
 				String handleName = null;
 				WebElement element = users.get(counter);
+				WebElement mouseHower = element.findElement(By.tagName("Strong"));
 				name = element.findElement(By.tagName("Strong")).getText();
 				handleName = "@" + element.findElement(By.tagName("b")).getText();
 				counter += 1;
-				System.out.println("Name " + name);
-				System.out.println("Handle Name " + handleName);
+				System.out.println("Name : " + name);
+				System.out.println("Handle Name : " + handleName);
+				//Actions actions = new Actions(driver);
+				
+				//actions.moveToElement(mouseHower).build().perform();
+				
 			}
 			
 			
