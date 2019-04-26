@@ -17,12 +17,14 @@ import java.util.concurrent.TimeUnit;
 
 
 
+
 import org.apache.commons.math3.analysis.differentiation.JacobianFunction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -47,7 +49,8 @@ public class Twittter {
 	
 	@BeforeMethod
 	public void setthings(){
-		driver = CommonMethods.launchBrowser();
+		//driver = CommonMethods.launchBrowser();
+		driver = CommonMethods.launchBrowser("Windows", "Chrome");
 		driver.get(Util.getConfigData("url"));
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -63,6 +66,7 @@ public class Twittter {
 	public void getMaxRetweetCounts() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		int maxRetweet = 0;
+		System.out.println(driver.getTitle());
 		if (driver.getTitle().equalsIgnoreCase(
 				"STeP-IN Forum (@stepin_forum) | Twitter")) {
 			List<WebElement> tweets = CommonMethods.findElements("xpath",
@@ -169,9 +173,9 @@ public class Twittter {
 	}
 	
 
-	//@AfterSuite
+	@AfterSuite
 	public void createFile() {
-		
+		driver.get(Util.getConfigData("upload_Url"));
 		File file = new File(System.getProperty("user.dir")
 				+ "//test-output/jsonFile.json");
 		FileWriter fWriter = null;
