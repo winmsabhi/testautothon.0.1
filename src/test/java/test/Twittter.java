@@ -6,19 +6,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-
-
-
-
-
-
-
-
-
-
-
-import org.apache.commons.math3.analysis.differentiation.JacobianFunction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -30,11 +17,9 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import commonFunctions.CommonMethods;
-import commonFunctions.JsonCreator;
 import commonFunctions.Util;
 
 public class Twittter {
@@ -49,8 +34,8 @@ public class Twittter {
 	
 	@BeforeMethod
 	public void setthings(){
-		//driver = CommonMethods.launchBrowser();
-		driver = CommonMethods.launchBrowser("Windows", "Chrome");
+		driver = CommonMethods.launchBrowser();
+		//driver = CommonMethods.launchBrowser("Windows", "Chrome");
 		driver.get(Util.getConfigData("url"));
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -175,13 +160,18 @@ public class Twittter {
 
 	@AfterSuite
 	public void createFile() {
-		driver.get(Util.getConfigData("upload_Url"));
+		//driver.get(Util.getConfigData("upload_Url"));
+		
 		File file = new File(System.getProperty("user.dir")
-				+ "//test-output/jsonFile.json");
+				+ "//test-output//jsonFile.json");
 		FileWriter fWriter = null;
 		try {
 			fWriter = new FileWriter(file);
 			fWriter.write(json.toString());
+/*			String path = file.getAbsolutePath();
+			driver.findElement(By.xpath("//input[@type='text']")).sendKeys(path);
+			driver.findElement(By.xpath("//input[@type='submit']")).click();*/
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

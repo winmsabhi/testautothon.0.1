@@ -1146,37 +1146,30 @@ public class CommonMethods {
 		//String browserType = Util.getConfigData("browser");
 		try {
 			caps.setCapability("browserstack.local", "false");
-			switch (Browser) {
-			case "Chrome":
+			
+			if(Browser.equalsIgnoreCase("Chrome")){
 				caps.setCapability("browser", "Chrome");
-				caps.setCapability("browser_version", "62.0");
-				break;
-			case "Edge":
+				caps.setCapability("browser_version", "62.0");}
+			else if(Browser.equalsIgnoreCase("Edge")){			
 				caps.setCapability("browser", "Edge");
-				caps.setCapability("browser_version", "18.0");
-				break;
-			case "IE":
+				caps.setCapability("browser_version", "18.0");}
+			else if(Browser.equalsIgnoreCase("IE")){
 				caps.setCapability("browser", "IE");
-				caps.setCapability("browser_version", "11.0");
-				break;
-			default:
+				caps.setCapability("browser_version", "11.0");}
+			else{
 				caps.setCapability("browser", "Chrome");
 				caps.setCapability("browser_version", "62.0");
-				break;
 			}
-			switch (Platform) {
-			case "Windows":
-				caps.setCapability("os_version", "10");
-				break;
-			case "Android":
+			
+			if(Platform.equalsIgnoreCase("Windows")){
+				caps.setCapability("os_version", "10");}
+			else if (Platform.equalsIgnoreCase("Android")){
 				caps.setCapability("os_version", "7.0");
 				caps.setCapability("device", "Samsung Galaxy S8");
 				caps.setCapability("real_mobile", "true");
-				caps.setCapability("browserstack.local", "false");
-				break;
-			default:
+				caps.setCapability("browserstack.local", "false");}
+			else{
 				caps.setCapability("os_version", "10");
-				break;
 			}
 			browseStackURL = new java.net.URL(URL);
 		} catch (Throwable t) {
