@@ -6,7 +6,7 @@
       <class name="test.Twittter">
         <methods>
           <include name="setup"/>
-          <include name="test"/>
+          <include name="getUsers"/>
         </methods>
       </class> <!-- test.Twittter -->
     </classes>

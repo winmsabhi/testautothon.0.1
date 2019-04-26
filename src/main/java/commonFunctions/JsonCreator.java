@@ -1,23 +1,25 @@
 package commonFunctions;
 
-import org.json.JSONObject;
+import com.google.gson.JsonObject;
+
 
 public class JsonCreator {
-	private  JSONObject JsonObj = null;
+	private JsonObject JsonObj = null;
 	
 	public JsonCreator() {
-		JsonObj = new JSONObject();
+		JsonObj = new JsonObject();
 	}
 	
-	public  JSONObject getJsonObject() {
+	public JsonObject getJsonObject() {
 		if (JsonObj == null) {
-			JsonObj = new JSONObject();
+			JsonObj = new JsonObject();
 		}
 		return JsonObj;
 	}
 	
-	public JSONObject addProperty(String propNameString, String propValue) {
-		JsonObj.put(propNameString, propValue);
+	public JsonObject addProperty(String propNameString, String propValue) {
+		JsonObj.addProperty(propNameString, propValue);
 		return JsonObj;
 	}
+
 }
