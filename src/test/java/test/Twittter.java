@@ -47,7 +47,7 @@ public class Twittter {
 		driver.close();
 	}
 	
-	@Test(description = "This method will fetch the maximum retweet count",priority = 0)
+	//@Test(description = "This method will fetch the maximum retweet count",priority = 0)
 	public void getMaxRetweetCounts() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		int maxRetweet = 0;
@@ -160,17 +160,18 @@ public class Twittter {
 
 	@AfterSuite
 	public void createFile() {
-		//driver.get(Util.getConfigData("upload_Url"));
-		
+		//
+		driver = CommonMethods.launchBrowser();
+		driver.get(Util.getConfigData("upload_Url"));
 		File file = new File(System.getProperty("user.dir")
 				+ "//test-output//jsonFile.json");
 		FileWriter fWriter = null;
 		try {
 			fWriter = new FileWriter(file);
 			fWriter.write(json.toString());
-/*			String path = file.getAbsolutePath();
+			String path = file.getAbsolutePath();
 			driver.findElement(By.xpath("//input[@type='text']")).sendKeys(path);
-			driver.findElement(By.xpath("//input[@type='submit']")).click();*/
+			driver.findElement(By.xpath("//input[@type='submit']")).click();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
