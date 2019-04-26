@@ -33,7 +33,7 @@ public class Util {
 	}
 	
 	public static String getConfigData(String key){
-		loadProperties(System.getProperty("user.dir")+ "\\src\\main\\resources\\Config.properties");
+		loadProperties(System.getProperty("user.dir")+ "\\src\\main\\resources\\Config.Properties");
 		String value = prop.getProperty(key);
 		return value;
 	}
