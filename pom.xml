@@ -66,12 +66,20 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.1</version>
+				<version>2.20.1</version>
+				<configuration>
+				<forkCount>4</forkCount>
+				<reuseForks>true</reuseForks>
+				<testFailureIgnore>true</testFailureIgnore>
 				<excludes>
 					<exclude>**/LaunchTest.class</exclude>
 				</excludes>
-			</plugin>
-			
+				<includes>
+					<include>**/Twittter.class</include>
+				</includes>
+				<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
